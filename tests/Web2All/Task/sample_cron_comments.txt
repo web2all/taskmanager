@@ -1,0 +1,31 @@
+# MIN HOUR DAY MONTH DAYOFWEEK  COMMAND
+
+# run `date` at 6:10 am every day
+10 6 * * * date
+
+# run every two hours at the top of the hour
+# [id] 1
+# [name] two-hourly date
+0 */2 * * * date
+
+# run every two hours between 11 pm and 7 am, and again at 8 am
+0 23-7/2,8 * * * date
+
+# run at 4:00 am on January 1st
+# [id] 3
+0 4 1 jan * date
+# [name] 11am date
+# run every day at 11 am, appending all output to a file
+0 11 * * * date >> /var/log/date-output 2>&1
+
+# [id] 5
+# run at 11 am on the first and last Mon, Tue, Wed of each month
+# [tags] date,housekeeping
+# [impact] This is unimportant
+# [impact] it really is
+0 11 1,5 * mon-wed date
+
+# [name] process list
+# run ps at 3 pm on each monday
+#0 15 * * mon ps
+
